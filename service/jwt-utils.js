@@ -12,7 +12,6 @@ async function verifyToken(token) {
 
             resolve(decoded);
         }
-
         jwt.verify(token, "UltraPrivateSecret", verifyTokenCallBack);
 
     });

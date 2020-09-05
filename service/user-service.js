@@ -1,7 +1,7 @@
 const User = require('../sequelize')
 const bcrypt = require('bcrypt');
 const { response } = require('express');
-//const token = require('../service/jwt-utils')
+const token = require('../service/jwt-utils')
 
 const saltRounds = 10;
 
@@ -21,7 +21,7 @@ exports.loginUserAccount = async function(userParam) {
     const compareResut = await bcrypt.compare(userParam['password'], user.get("password"));
 
     if (compareResut)
-        return 200 //token.createAndSignToken()
+        return await token.createAndSignToken()
 
     return 401
 

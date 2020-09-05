@@ -13,8 +13,13 @@ UserModelRouter.route('/createUserAccount').post(
 UserModelRouter.route('/login').post(
     async function(req, res) {
         const response = await Service.loginUserAccount(req.body)
-        console.log(response)
-        res.sendStatus(response)
+        res.status(201).send(response)
+    }
+)
+
+UserModelRouter.route('/stuff').post(
+    async function(req, res) {
+
     }
 )
 
