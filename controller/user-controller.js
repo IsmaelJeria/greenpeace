@@ -17,9 +17,9 @@ UserModelRouter.route('/login').post(
     }
 )
 
-UserModelRouter.route('/stuff').post(
+UserModelRouter.route('/doStuff').post(
     async function(req, res) {
-
+        res.status(201).send('doing stuff')
     }
 )
 

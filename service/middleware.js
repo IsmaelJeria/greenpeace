@@ -4,10 +4,19 @@ async function validateLogging(req, res, next) {
 
     if (req.url == '/api/createUserAccount') {
         next()
-    } else {
-        const result = await token.verifyToken(req.headers.authorization.substr(7))
-        console.log(result)
+    } else if (req.url == '/api/login') {
         next()
+    } else {
+        try {
+            const result = await token.verifyToken(req.headers.authorization.substr(7))
+            console.log('after validate token')
+            console.log(result)
+            next()
+        } catch (err) {
+            console.log('error en tu token')
+            res.status(201).send('error en el token')
+            return 401
+        }
     }
 }
 
